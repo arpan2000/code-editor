@@ -34,7 +34,7 @@ const Output = ({ editorRef, language }) => {
     <Box w="50%">
       <Button
         variant="solid"
-        colorScheme="gray"
+        colorScheme="blue"
         mb={4}
         isLoading={isLoading}
         onClick={runCode}
