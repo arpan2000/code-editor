@@ -25,16 +25,17 @@ const CodeEditor = () => {
     <Box>
       <HStack spacing={4}>
         <Box w="50%">
-          <LanguageSelector language={language} onSelect={onSelect} />
+          <LanguageSelector onSelect={onSelect} />
+          <Box border='1px' borderColor='black'>
           <Editor
             height="75vh"
-            theme="vs-dark"
+            theme="vs"
             language={language}
             defaultValue={CODE_SNIPPETS["javascript"]}
             value={value}
             onMount={onMount}
             onChange={(value) => setValue(value)}
-          />
+          /></Box>
         </Box>
         <Output editorRef={editorRef} language={language}/>
       </HStack>

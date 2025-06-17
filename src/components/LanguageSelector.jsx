@@ -6,41 +6,27 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Tabs,
+  TabList,
+  Tab,
 } from "@chakra-ui/react";
 import { LANGUAGE_VERSION } from "../constants";
 
 const languages = Object.entries(LANGUAGE_VERSION); //returns array of key-value pairs from an object
 const ACTIVE_COLOR = "blue.400";
 
-const LanguageSelector = ({ language, onSelect }) => {
+const LanguageSelector = ({ onSelect }) => {
   return (
     <Box ml={2} mb={4}>
-      <Text mb={2} fontSize="lg">
-        Language:
-      </Text>
-      <Menu isLazy>
-        <MenuButton as={Button}>{language}</MenuButton>
-        <MenuList bg="#110c1b">
-          {languages.map(([lang, version]) => (
-            <MenuItem
-              key={lang}
-              color={lang === language ? ACTIVE_COLOR : "white"}
-              bg={lang === language ? "gray.900" : "transparent"}
-              _hover={{
-                color: ACTIVE_COLOR,
-                bg: "gray.900",
-              }}
-              onClick={() => onSelect(lang)}
-            >
+      <Tabs isLazy variant='enclosed'>
+        <TabList>
+          {languages.map(([lang]) => (
+            <Tab key={lang} onClick={() => onSelect(lang)}>
               {lang}
-              &nbsp;
-              <Text as="span" color="gray.600" fontSize="sm">
-                ({version})
-              </Text>
-            </MenuItem>
+            </Tab>
           ))}
-        </MenuList>
-      </Menu>
+        </TabList>
+      </Tabs>
     </Box>
   );
 };
